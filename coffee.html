@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway" >
     <!-- Our CSS -->
     <link rel="stylesheet" href="static/coffee.css">
+    <script
+      src="http://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="container">
@@ -48,32 +53,40 @@
 
     // Set these variables to their DOM elements
 
-    const coffeeImage = document.querySelector("img");
-    coffeeImage.setAttribute("src", "static/coffee_beans.jpg");
+    // const coffeeImage = document.querySelector("img");
+    const coffeeImage = $('img');
+
+    // coffeeImage.setAttribute("src", "static/coffee_beans.jpg");
+    coffeeImage.attr('src', 'static/coffee_beans.jpg');
     const revenueMessage = 'replace me';
 
-    const makeCoffee = (imgLink) => {
-        coffeeImage.setAttribute('src', 'static/coffee_machine.jpg');
+    const makeCoffee = (drinkType) => {
+        // coffeeImage.setAttribute('src', 'static/coffee_machine.jpg');
+        // setTimeout(() => {
+        //     coffeeImage.setAttribute('src', 'static/coffee_mug.jpg');
+        // }, 1500);
+        // setTimeout(() => {
+        //     coffeeImage.setAttribute('src', 'static/coffee_beans.jpg');
+        // }, 4000);
+        coffeeImage.attr('src', 'static/coffee_machine.jpg');
         setTimeout(() => {
-            coffeeImage.setAttribute('src', 'static/coffee_mug.jpg');
+        coffeeImage.attr('src', 'static/coffee_mug.jpg');
         }, 1500);
-
         setTimeout(() => {
-            coffeeImage.setAttribute('src', 'static/coffee_beans.jpg');
+        coffeeImage.attr('src', 'static/coffee_beans.jpg');
         }, 4000);
+        drinksOrdered.push(drinkType);
+        console.log(drinksOrdered);
+
+
     }
    
+    const drinksOrdered = []
 
-    const photo = document.querySelector('#coffee-image');
-    photo.addEventListener('click', makeCoffee);
-    //     () => {
-    //     makeImg('static/coffee_machine.jpg');  
-    //     setTimeout(function) {
-    //         (makeImg('static/coffee_mug.jpg')}, 1500;
-
-    //     setTimeout(function){
-    //         (makeImg('static/coffee_beans.jpg')}, 4000;
-    // };
+    // const photo = document.querySelector('#coffee-image');
+    // photo.addEventListener('click', makeCoffee);
+    const photo = $('#coffee-image');
+    photo.on('click', function() { makeCoffee("brew"); });
 
 
     // use this JavaScript object in further study step
